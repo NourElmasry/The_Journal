@@ -1,0 +1,106 @@
+﻿@model IEnumerable<The_Journal.Models.Child>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Family.ApplicationUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KeyWorker.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Room.RoomID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KnownName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Family.ApplicationUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KeyWorker.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KnownName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ChildID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ChildID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ChildID })
+        </td>
+    </tr>
+}
+
+</table>
