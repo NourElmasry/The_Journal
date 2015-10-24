@@ -2,7 +2,9 @@
 
     $(function () {
 
-        $(".datecontrol").datepicker();
+        $('.datecontrol').datepicker({
+            format: 'dd/mm/yyyy'
+        });
 
     });
 

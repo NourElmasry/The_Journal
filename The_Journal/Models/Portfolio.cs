@@ -15,9 +15,9 @@ namespace The_Journal.Models
         public int ChildID { get; set; }
         public virtual Child Child { get; set; }
 
-        public List<DayJournal> Journal { get; set; }
+        public IEnumerable<DayJournal> Journal { get; set; }
 
-        public List<Picture> Pics { get; set; }
+        public IEnumerable<Picture> Pics { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }

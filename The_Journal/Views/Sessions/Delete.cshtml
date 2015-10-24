@@ -1,0 +1,56 @@
+﻿@model The_Journal.Models.Session
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Session</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SessionRate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SessionRate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Day)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Day)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

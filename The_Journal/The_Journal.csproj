@@ -159,15 +159,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarersController.cs" />
     <Compile Include="Controllers\ChildrenController.cs" />
+    <Compile Include="Controllers\EmergencyContactsController.cs" />
+    <Compile Include="Controllers\FamiliesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SessionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201510211229056_First_Migration.cs" />
     <Compile Include="Migrations\201510211229056_First_Migration.Designer.cs">
       <DependentUpon>201510211229056_First_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510231230260_Model_Modifications.cs" />
+    <Compile Include="Migrations\201510231230260_Model_Modifications.Designer.cs">
+      <DependentUpon>201510231230260_Model_Modifications.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -324,6 +332,30 @@
     <Content Include="Views\Children\Details.cshtml" />
     <Content Include="Views\Children\Edit.cshtml" />
     <Content Include="Views\Children\Index.cshtml" />
+    <Content Include="Views\Sessions\Create.cshtml" />
+    <Content Include="Views\Sessions\Delete.cshtml" />
+    <Content Include="Views\Sessions\Details.cshtml" />
+    <Content Include="Views\Sessions\Edit.cshtml" />
+    <Content Include="Views\Sessions\Index.cshtml" />
+    <Content Include="Views\Shared\_Session.cshtml" />
+    <Content Include="Views\Shared\_Family.cshtml" />
+    <Content Include="Views\Families\Create.cshtml" />
+    <Content Include="Views\Families\Delete.cshtml" />
+    <Content Include="Views\Families\Details.cshtml" />
+    <Content Include="Views\Families\Edit.cshtml" />
+    <Content Include="Views\Families\Index.cshtml" />
+    <Content Include="Views\Carers\Create.cshtml" />
+    <Content Include="Views\Carers\Delete.cshtml" />
+    <Content Include="Views\Carers\Details.cshtml" />
+    <Content Include="Views\Carers\Edit.cshtml" />
+    <Content Include="Views\Carers\Index.cshtml" />
+    <Content Include="Views\EmergencyContacts\Create.cshtml" />
+    <Content Include="Views\EmergencyContacts\Delete.cshtml" />
+    <Content Include="Views\EmergencyContacts\Details.cshtml" />
+    <Content Include="Views\EmergencyContacts\Edit.cshtml" />
+    <Content Include="Views\EmergencyContacts\Index.cshtml" />
+    <Content Include="Views\Shared\CreateEmergencyContacts.cshtml" />
+    <Content Include="Views\Shared\CreateCarer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +370,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201510211229056_First_Migration.resx">
       <DependentUpon>201510211229056_First_Migration.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510231230260_Model_Modifications.resx">
+      <DependentUpon>201510231230260_Model_Modifications.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

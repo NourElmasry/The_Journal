@@ -15,7 +15,7 @@ namespace The_Journal.Models
         public int ChildID { get; set; }
         public virtual Child Child { get; set; }
 
-        public List<Session> Sessions { get; set; }
+        public IEnumerable<Session> Sessions { get; set; }
 
         public RoomName Room { get; set; }
        

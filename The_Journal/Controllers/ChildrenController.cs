@@ -54,6 +54,8 @@ namespace The_Journal.Controllers
         {
             if (ModelState.IsValid)
             {
+                DateTime now = DateTime.Today;
+                child.Age = now.Year - child.DOB.Year;
                 db.Children.Add(child);
                 db.SaveChanges();
                 return RedirectToAction("Index");

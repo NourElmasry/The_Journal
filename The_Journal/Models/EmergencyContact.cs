@@ -23,5 +23,8 @@ namespace The_Journal.Models
 
         [Display(Name = "Relationship")]
         public string Relationship { get; set; }
+
+        public int FamilyID { get; set; }
+        public virtual Family Family { get; set; }
     }
 }
