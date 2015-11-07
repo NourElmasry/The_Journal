@@ -45,5 +45,7 @@ namespace The_Journal.Models
         public System.Data.Entity.DbSet<The_Journal.Models.Room> Rooms { get; set; }
         public System.Data.Entity.DbSet<The_Journal.Models.Session> Sessions { get; set; }
 
+        public System.Data.Entity.DbSet<The_Journal.ViewModels.FamilyViewModel> FamilyViewModels { get; set; }
+
     }
 }

@@ -17,7 +17,7 @@ namespace The_Journal.Models
 
         public IEnumerable<Session> Sessions { get; set; }
 
-        public RoomName Room { get; set; }
+        public string Room { get; set; }
        
 
     }

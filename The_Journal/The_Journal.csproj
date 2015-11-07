@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201510231230260_Model_Modifications.Designer.cs">
       <DependentUpon>201510231230260_Model_Modifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511051220537_Model_Modifications1.cs" />
+    <Compile Include="Migrations\201511051220537_Model_Modifications1.Designer.cs">
+      <DependentUpon>201511051220537_Model_Modifications1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -197,6 +201,7 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FamilyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -226,6 +231,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.az.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.bg.min.js" />
@@ -339,11 +346,6 @@
     <Content Include="Views\Sessions\Index.cshtml" />
     <Content Include="Views\Shared\_Session.cshtml" />
     <Content Include="Views\Shared\_Family.cshtml" />
-    <Content Include="Views\Families\Create.cshtml" />
-    <Content Include="Views\Families\Delete.cshtml" />
-    <Content Include="Views\Families\Details.cshtml" />
-    <Content Include="Views\Families\Edit.cshtml" />
-    <Content Include="Views\Families\Index.cshtml" />
     <Content Include="Views\Carers\Create.cshtml" />
     <Content Include="Views\Carers\Delete.cshtml" />
     <Content Include="Views\Carers\Details.cshtml" />
@@ -356,6 +358,12 @@
     <Content Include="Views\EmergencyContacts\Index.cshtml" />
     <Content Include="Views\Shared\CreateEmergencyContacts.cshtml" />
     <Content Include="Views\Shared\CreateCarer.cshtml" />
+    <Content Include="Views\Shared\_AddNewCarer.cshtml" />
+    <Content Include="Views\Families\Delete.cshtml" />
+    <Content Include="Views\Families\Details.cshtml" />
+    <Content Include="Views\Families\Edit.cshtml" />
+    <Content Include="Views\Families\Index.cshtml" />
+    <Content Include="Views\Families\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510231230260_Model_Modifications.resx">
       <DependentUpon>201510231230260_Model_Modifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511051220537_Model_Modifications1.resx">
+      <DependentUpon>201511051220537_Model_Modifications1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

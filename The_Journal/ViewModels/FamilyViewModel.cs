@@ -5,12 +5,17 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Spatial;
 using System.ComponentModel.DataAnnotations.Schema;
+using The_Journal.Models;
 
-namespace The_Journal.Models
+namespace The_Journal.ViewModels
 {
-    public class Carer
+    public class FamilyViewModel
     {
         [Key]
+        public int FamilyID { get; set; }
+
+        // Carer Information
+        
         public int CarerID { get; set; }
 
         [Display(Name = "First Name")]
@@ -36,10 +41,24 @@ namespace The_Journal.Models
 
         public string PostCode { get; set; }
 
-        public int FamilyID { get; set; }
-        public virtual Family Family { get; set; }
+       // bool IsMainCarer { get { return Family.MainCarerID == this.CarerID; } }
 
-        bool IsMainCarer { get { return Family.MainCarerID == this.CarerID; } }
+        //Emergency Contact Information
+
+       
+        public int EmergencyContactID { get; set; }
+
+        [Display(Name = "First Name")]
+        public string EmFirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string EmLastName { get; set; }
+
+        [Display(Name = "Mobile Number")]
+        public int EmMobileNum { get; set; }
+
+        [Display(Name = "Relationship")]
+        public string EmRelationship { get; set; }
 
     }
 }

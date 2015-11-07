@@ -56,3 +56,4 @@ C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.p
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.First_Migration.resources
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.csproj.GenerateResource.Cache
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Model_Modifications.resources
+C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Model_Modifications1.resources

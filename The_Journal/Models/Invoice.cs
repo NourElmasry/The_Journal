@@ -20,7 +20,7 @@ namespace The_Journal.Models
 
         public int Total { get; set; }
 
-        public IEnumerable<InvoiceLine> InvoiceLines { get; set; }
+        public virtual IEnumerable<InvoiceLine> InvoiceLines { get; set; }
 
         public int FamilyID { get; set; }
         public virtual Family Family { get; set; }

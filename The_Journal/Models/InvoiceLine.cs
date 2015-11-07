@@ -19,6 +19,6 @@ namespace The_Journal.Models
 
         public DateTime SessionDate { get; set; }
 
-
+        public int InvoiceID { get; set; } 
     }
 }

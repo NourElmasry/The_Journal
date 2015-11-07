@@ -48,7 +48,7 @@ namespace The_Journal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FamilyID,ApplicationUserID")] Family family)
+        public ActionResult Create([Bind(Include = "FamilyID,ApplicationUserID,MainCarerID")] Family family)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace The_Journal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FamilyID,ApplicationUserID")] Family family)
+        public ActionResult Edit([Bind(Include = "FamilyID,ApplicationUserID,MainCarerID")] Family family)
         {
             if (ModelState.IsValid)
             {
