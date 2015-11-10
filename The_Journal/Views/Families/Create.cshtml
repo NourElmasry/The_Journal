@@ -17,7 +17,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" data-bind="foreach: Carers">
             <div class="panel-heading">Carer</div>
             <div class="panel-body">
 
@@ -92,14 +92,14 @@
                         @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <button class="btn btn-default" data-bind="click: addCarer">Add Carer</button>
+               
             </div>
         </div>
 
-        
+        <button class="btn btn-default" data-bind="click: addCarer">Add Carer</button>
 
 
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" data-bind="foreach: EmContacts">
             <div class="panel-heading">Emergency Contacts</div>
             <div class="panel-body">
 
@@ -138,10 +138,11 @@
                         @Html.ValidationMessageFor(model => model.EmRelationship, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <button class="btn btn-default" data-bind="click: addEC">Add Emergency Contact</button>                
             </div>
         </div>     
+
+        <button class="btn btn-default" data-bind="click: addEC">Add Emergency Contact</button>                
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
