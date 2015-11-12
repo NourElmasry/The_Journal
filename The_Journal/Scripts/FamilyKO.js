@@ -1,4 +1,4 @@
-﻿var AddCarerVM= function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode)
+﻿var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode)
 {
     var carer = this;
     carer.CFirstName = CFirstName;
@@ -60,20 +60,111 @@ function AddFamilyViewModel()
 
     family.removeEContact = function (EContact) { family.EContacts.remove(EContact) }
 
-    family.NewCarerFirstName = ko.observable();
-    family.NewCarerLastName = ko.observable();
-    family.NewCarerDOB = ko.observable();
-    family.NewCarerHomeNum = ko.observable();
-    family.NewCarerMobileNum = ko.observable();
-    family.NewCarerWorkNum = ko.observable();
-    family.NewCarerAddress = ko.observable();
-    family.NewCarerPostCode = ko.observable();
-    family.NewCarerEmail = ko.observable();
+    family.NewCarerFirstName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        pattern: {
+            message: 'This field must contain only letters',
+            params: '^[A-Za-z]+$'
+        }
+    });
 
-    family.NewECFirstName = ko.observable();
-    family.NewECLastName = ko.observable();
-    family.NewECMobileNum = ko.observable();
-    family.NewECRelationship = ko.observable();
+    family.NewCarerLastName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        pattern: {
+            message: 'This field must contain only letters',
+            params: '^[A-Za-z]+$'
+        }
+    });
+
+    family.NewCarerDOB = ko.observable().extend({required: true});
+
+    family.NewCarerHomeNum = ko.observable().extend({
+        required: true,
+        minLength: 7,
+        maxLength:7,
+        pattern: {
+            message: 'This field must contain only numbers',
+            params: '^[0-9]*$'
+        }
+    });
+
+    family.NewCarerMobileNum = ko.observable().extend({
+        required: true,
+        minLength: 10,
+        maxLength: 10,
+        pattern: {
+            message: 'This field must contain only numbers',
+            params: '^[0-9]*$'
+        }
+    });
+
+    family.NewCarerWorkNum = ko.observable().extend({
+        required: true,
+        minLength: 7,
+        maxLength: 7,
+        pattern: {
+            message: 'This field must contain only numbers',
+            params: '^[0-9]*$'
+        }
+    });
+
+    family.NewCarerAddress = ko.observable().extend({
+        required: true,
+        pattern: {
+            message: 'This field must not contain any other character',
+            params: '[A-Za-z0-9\'\.\-\s\,]'
+        }
+    });
+    
+
+    family.NewCarerPostCode = ko.observable().extend({
+        required: true,
+        pattern: {
+            message: 'This field must be in Postcode Pattern Ex: A00 0AA ',
+            params: '/[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}/g'
+        }
+    });
+
+    family.NewCarerEmail = ko.observable().extend({ email: true, required: true });
+
+    family.NewECFirstName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        pattern: {
+            message: 'This field must contain only letters',
+            params: '^[A-Za-z]+$'
+        }
+    });
+    
+    family.NewECLastName = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        pattern: {
+            message: 'This field must contain only letters',
+            params: '^[A-Za-z]+$'
+        }
+    });
+
+    family.NewECMobileNum = ko.observable().extend({
+        required: true,
+        minLength: 10,
+        maxLength: 10,
+        pattern: {
+            message: 'This field must contain only numbers',
+            params: '^[0-9]*$'
+        }
+    });
+
+    family.NewECRelationship = ko.observable().extend({
+        required: true,
+        minLength: 3,
+        pattern: {
+            message: 'This field must contain only letters',
+            params: '^[A-Za-z]+$'
+        }
+    });
 
     family.RawData = ko.computed(function () {
         var data = ko.toJS(family);
