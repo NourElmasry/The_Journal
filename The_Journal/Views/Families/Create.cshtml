@@ -17,14 +17,14 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
-        <div class="panel panel-primary" data-bind="foreach: Carers">
+        <div class="panel panel-primary">
             <div class="panel-heading">Carer</div>
             <div class="panel-body">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CFirstName" class="form-control" />
+                        <input type="text" data-bind="value:NewCarerFirstName" class="form-control" />
                        @* @Html.TextBoxFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CFirstName" })*@
                         @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                     </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CLastName" class="form-control" />
+                        <input type="text" data-bind="value:NewCarerLastName" class="form-control" />
                        @* @Html.TextBoxFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CLastName" })*@
                         @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                     </div>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CDOB" class="form-control" />
+                        <input type="text"  class="form-control" />
                        @* @Html.TextBoxFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CDOB" })*@
                         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
                     </div>
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.HomeNum, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CHomeNum" class="form-control" />
+                        <input type="text" class="form-control" />
                       @*  @Html.TextBoxFor(model => model.HomeNum, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CHomeNum" })*@
                         @Html.ValidationMessageFor(model => model.HomeNum, "", new { @class = "text-danger" })
                     </div>
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.WorkNum, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CWorkNum" class="form-control" />
+                        <input type="text" class="form-control" />
                       @*  @Html.TextBoxFor(model => model.WorkNum, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CWorkNum" })*@
                         @Html.ValidationMessageFor(model => model.WorkNum, "", new { @class = "text-danger" })
                     </div>
@@ -69,7 +69,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.MobileNum, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CMobileNum" class="form-control" />
+                        <input type="text" class="form-control" />
                        @* @Html.TextBoxFor(model => model.MobileNum, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CMobileNum" })*@
                         @Html.ValidationMessageFor(model => model.MobileNum, "", new { @class = "text-danger" })
                     </div>
@@ -78,7 +78,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CAddress" class="form-control" />
+                        <input type="text" class="form-control" />
                        @* @Html.TextBoxFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CAddress" })*@
                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                     </div>
@@ -87,7 +87,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:CPostCode" class="form-control" />
+                        <input type="text" class="form-control" />
                        @* @Html.TextBoxFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" }, data_bind = "value:CPostCode" })*@
                         @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
                     </div>
@@ -97,16 +97,24 @@
         </div>
 
         <button class="btn btn-default" data-bind="click: addCarer">Add Carer</button>
+        
 
+        <ul data-bind="foreach: Carers, visible: Carers().length > 0">
+            <li>
+                <p data-bind="text: CFirstName" />
+            </li>
+        </ul>
 
-        <div class="panel panel-primary" data-bind="foreach: EmContacts">
+        <span data-bind="text: RawData"></span>
+
+        <div class="panel panel-primary">
             <div class="panel-heading">Emergency Contacts</div>
             <div class="panel-body">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.EmFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:EmFirstName" class="form-control" />
+                        <input type="text" class="form-control" />
                       @*  @Html.TextBoxFor(model => model.EmFirstName, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.EmFirstName, "", new { @class = "text-danger" })
                     </div>
@@ -115,7 +123,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EmLastName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:EmLastName" class="form-control" />
+                        <input type="text" class="form-control" />
                        @* @Html.TextBoxFor(model => model.EmLastName, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.EmLastName, "", new { @class = "text-danger" })
                     </div>
@@ -124,7 +132,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EmMobileNum, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:EmMobileNum" class="form-control" />
+                        <input type="text" class="form-control" />
                       @*  @Html.TextBoxFor(model => model.EmMobileNum, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.EmMobileNum, "", new { @class = "text-danger" })
                     </div>
@@ -133,7 +141,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.EmRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:EmRelationship" class="form-control" />
+                        <input type="text" class="form-control" />
                        @* @Html.TextBoxFor(model => model.EmRelationship, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.EmRelationship, "", new { @class = "text-danger" })
                     </div>

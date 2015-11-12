@@ -54,16 +54,35 @@ function AddFamilyViewModel()
 {
     var family = this;
 
-    family.Carers = ko.observableArray([new AddCarerVM(" ", " ", " ", " ", " ", " ", " ", " ")]);
+    family.Carers = ko.observableArray();
     
     family.EmContacts = ko.observableArray([new AddECVM("c", "d", "2", "d")]);
     
     family.addCarer= function () {
-            family.Carers.push(new AddCarerVM(" "," "," "," "," "," "," "," "));
+        family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), " ", " ", " ", " ", " ", " "));
+
+        family.NewCarerFirstName("");
+        family.NewCarerLastName("");
+
+        return false;
     }
 
     family.addEC = function () {
-        family.EmConatcts.push(new AddECVM("","","",""));
-      }
+        family.EmContacts.push(new AddECVM("", "", "", ""));
+
+        return false;
+    }
+
+
+    family.NewCarerFirstName = ko.observable();
+    family.NewCarerLastName = ko.observable();
+
+    family.RawData = ko.computed(function () {
+        var data = ko.toJS(family);
+        delete data.RawData;
+        delete data.NewCarerFirstName;
+        delete data.NewCarerLastName;
+        return JSON.stringify(data);
+    });
 }
 ko.applyBindings(new AddFamilyViewModel());
