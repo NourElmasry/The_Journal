@@ -37,6 +37,8 @@ namespace The_Journal.ViewModels
         [Display(Name = "Mobile Number")]
         public int MobileNum { get; set; }
 
+
+
         public string Address { get; set; }
 
         public string PostCode { get; set; }
