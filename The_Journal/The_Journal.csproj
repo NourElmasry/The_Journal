@@ -337,18 +337,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates.cshtml" />
-    <Content Include="Views\Children\Create.cshtml" />
-    <Content Include="Views\Children\Delete.cshtml" />
-    <Content Include="Views\Children\Details.cshtml" />
-    <Content Include="Views\Children\Edit.cshtml" />
-    <Content Include="Views\Children\Index.cshtml" />
     <Content Include="Views\Sessions\Create.cshtml" />
     <Content Include="Views\Sessions\Delete.cshtml" />
     <Content Include="Views\Sessions\Details.cshtml" />
     <Content Include="Views\Sessions\Edit.cshtml" />
     <Content Include="Views\Sessions\Index.cshtml" />
-    <Content Include="Views\Shared\_Session.cshtml" />
-    <Content Include="Views\Shared\_Family.cshtml" />
     <Content Include="Views\Carers\Create.cshtml" />
     <Content Include="Views\Carers\Delete.cshtml" />
     <Content Include="Views\Carers\Details.cshtml" />
@@ -359,15 +352,17 @@
     <Content Include="Views\EmergencyContacts\Details.cshtml" />
     <Content Include="Views\EmergencyContacts\Edit.cshtml" />
     <Content Include="Views\EmergencyContacts\Index.cshtml" />
-    <Content Include="Views\Shared\CreateEmergencyContacts.cshtml" />
-    <Content Include="Views\Shared\CreateCarer.cshtml" />
-    <Content Include="Views\Shared\_AddNewCarer.cshtml" />
     <Content Include="Views\Families\Delete.cshtml" />
     <Content Include="Views\Families\Details.cshtml" />
     <Content Include="Views\Families\Edit.cshtml" />
     <Content Include="Views\Families\Index.cshtml" />
     <Content Include="Views\Families\Create.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\Children\Create.cshtml" />
+    <Content Include="Views\Children\Delete.cshtml" />
+    <Content Include="Views\Children\Details.cshtml" />
+    <Content Include="Views\Children\Edit.cshtml" />
+    <Content Include="Views\Children\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

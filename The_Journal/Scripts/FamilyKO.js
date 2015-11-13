@@ -1,4 +1,22 @@
-﻿var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode)
+﻿var AddChildVM = function AddChild(ChildFirstName, ChildLastName, ChildDOB, ChildKnownName, ChildGender, ChildAge, ChildStartDate, ChildEndDate, ChildSEN, ChildKeyWorker,ChildAllergy, ChildRoom)
+{
+    var child = this;
+
+    child.ChildFirstName = ChildFirstName;
+    child.ChildLastName = ChildLastName;
+    child.ChildDOB = ChildDOB;
+    child.ChildKnownName = ChildKnownName;
+    child.ChildGender = ChildGender;
+    child.ChildAge = ChildAge;
+    child.ChildStartDate = ChildStartDate;
+    child.ChildEndDate = ChildEndDate;
+    child.ChildSEN = ChildSEN;
+    child.ChildKeyWorker = ChildKeyWorker;
+    child.ChildAllergy = ChildAllergy;
+    child.ChildRoom = ChildRoom;
+   
+}
+var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode)
 {
     var carer = this;
     carer.CFirstName = CFirstName;
@@ -29,32 +47,66 @@ function AddFamilyViewModel()
     
     family.EContacts = ko.observableArray();
     
-    family.addCarer= function () {
-        family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode()));
+    famil.Children = ko.observableArray();
 
-        family.NewCarerFirstName("");
-        family.NewCarerLastName("");
-        family.NewCarerDOB("");
-        family.NewCarerEmail("");
-        family.NewCarerHomeNum("");
-        family.NewCarerMobileNum("");
-        family.NewCarerWorkNum("");
-        family.NewCarerAddress("");
-        family.NewCarerPostCode("");
-        return false;
+    family.addCarer = function () {
+
+        if (family.NewCarerFirstName.isValid() && family.NewCarerLastName.isValid() && familyNewCarerDOB.isValid() && family.NewCarerEmail.isValid() && family.NewCarerHomeNum.isValid() && family.NewCarerMobileNum.isValid() && family.NewCarerWorkNum.isValid() && family.NewCarerAddress.isValid() && family.NewCarerPostCode.isValid())
+        {
+            family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode()));
+
+            family.NewCarerFirstName("");
+            family.NewCarerLastName("");
+            family.NewCarerDOB("");
+            family.NewCarerEmail("");
+            family.NewCarerHomeNum("");
+            family.NewCarerMobileNum("");
+            family.NewCarerWorkNum("");
+            family.NewCarerAddress("");
+            family.NewCarerPostCode("");
+            return false;
+        }
+
     }
+
+
+    family.addChild = function () {
+
+        if (family.NewCarerFirstName.isValid() && family.NewCarerLastName.isValid() && familyNewCarerDOB.isValid() && family.NewCarerEmail.isValid() && family.NewCarerHomeNum.isValid() && family.NewCarerMobileNum.isValid() && family.NewCarerWorkNum.isValid() && family.NewCarerAddress.isValid() && family.NewCarerPostCode.isValid()) {
+            family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode()));
+
+            child.ChildFirstName("");
+            child.ChildLastName("");
+            child.ChildDOB("");
+            child.ChildKnownName("");
+            child.ChildGender("");
+            child.ChildAge("");
+            child.ChildStartDate("");
+            child.ChildEndDate("");
+            child.ChildSEN("");
+            child.ChildKeyWorker("");
+            child.ChildAllergy("");
+            child.ChildRoom("");
+            return false;
+        }
+
+    }
+
 
     family.removeCarer = function(Carer) { family.Carers.remove(Carer) }
    
-
+    family.removeChild = function (Child) { family.Children.remove(Child) }
 
     family.addEC = function () {
-        family.EContacts.push(new AddECVM(family.NewECFirstName(), family.NewECLastName(), family.NewECMobileNum(), family.NewECRelationship()));
+        if (family.NewECFirstName.isValid() && family.NewECMobileNum.isValid() && family.NewECLastName.isValid() && family.NewECRelationship.isValid())
+        {
+            family.EContacts.push(new AddECVM(family.NewECFirstName(), family.NewECLastName(), family.NewECMobileNum(), family.NewECRelationship()));
 
-        family.NewECFirstName("");
-        family.NewECLastName("");
-        family.NewECMobileNum("");
-        family.NewECRelationship("");
+            family.NewECFirstName("");
+            family.NewECLastName("");
+            family.NewECMobileNum("");
+            family.NewECRelationship("");
+        }
         return false;
     }
 
@@ -65,7 +117,7 @@ function AddFamilyViewModel()
         minLength: 3,
         pattern: {
             message: 'This field must contain only letters',
-            params: '^[A-Za-z]+$'
+            params: '^[A-Za-z ]+$'
         }
     });
 
@@ -74,7 +126,7 @@ function AddFamilyViewModel()
         minLength: 3,
         pattern: {
             message: 'This field must contain only letters',
-            params: '^[A-Za-z]+$'
+            params: '^[A-Za-z ]+$'
         }
     });
 
@@ -86,7 +138,7 @@ function AddFamilyViewModel()
         maxLength:7,
         pattern: {
             message: 'This field must contain only numbers',
-            params: '^[0-9]*$'
+            params: '^[0-9 ]*$'
         }
     });
 
@@ -96,7 +148,7 @@ function AddFamilyViewModel()
         maxLength: 10,
         pattern: {
             message: 'This field must contain only numbers',
-            params: '^[0-9]*$'
+            params: '^[0-9 ]*$'
         }
     });
 
@@ -106,7 +158,7 @@ function AddFamilyViewModel()
         maxLength: 7,
         pattern: {
             message: 'This field must contain only numbers',
-            params: '^[0-9]*$'
+            params: '^[0-9 ]*$'
         }
     });
 
@@ -134,7 +186,7 @@ function AddFamilyViewModel()
         minLength: 3,
         pattern: {
             message: 'This field must contain only letters',
-            params: '^[A-Za-z]+$'
+            params: '^[A-Za-z ]+$'
         }
     });
     
@@ -143,7 +195,7 @@ function AddFamilyViewModel()
         minLength: 3,
         pattern: {
             message: 'This field must contain only letters',
-            params: '^[A-Za-z]+$'
+            params: '^[A-Za-z ]+$'
         }
     });
 
@@ -153,7 +205,7 @@ function AddFamilyViewModel()
         maxLength: 10,
         pattern: {
             message: 'This field must contain only numbers',
-            params: '^[0-9]*$'
+            params: '^[0-9 ]*$'
         }
     });
 
@@ -162,12 +214,17 @@ function AddFamilyViewModel()
         minLength: 3,
         pattern: {
             message: 'This field must contain only letters',
-            params: '^[A-Za-z]+$'
+            params: '^[A-Za-z ]+$'
         }
     });
 
     family.RawData = ko.computed(function () {
         var data = ko.toJS(family);
+
+
+
+        
+
 
         delete data.RawData;
 
@@ -188,5 +245,21 @@ function AddFamilyViewModel()
 
         return JSON.stringify(data);
     });
+
+    family.Done = function () {
+        $.ajax({
+            url: "/Families/Save",
+            type: "post",
+            data: family.RawData(),
+            datatype: "json",
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                alert(result);
+            }
+        });
+    }
+
+
 }
 ko.applyBindings(new AddFamilyViewModel());

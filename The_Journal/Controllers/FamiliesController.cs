@@ -7,12 +7,30 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using The_Journal.Models;
+using The_Journal.ViewModels;
 
 namespace The_Journal.Controllers
 {
     public class FamiliesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        [HttpPost]
+        public void Save(FamilyViewModel data)
+        {
+            var family = new Family();
+
+           // db.Family.Find()
+
+            var carer = new Carer();
+
+            carer.Family = family;
+
+            db.Carers.Add(carer);
+            db.Family.Add(family);
+            db.SaveChanges();
+            //ViewBag.myFamilyDetails = myData;
+        }
 
         // GET: Families
         public ActionResult Index()

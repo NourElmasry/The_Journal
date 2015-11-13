@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Child</h4>
         <hr />
@@ -90,16 +90,20 @@
 
 
         <div class="form-group">
-           @Html.Label("Family", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Family", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <label class="radio-inline"><input type="radio" name="familyradio" checked="checked" value="Existed">Existing Family</label>
                 <label class="radio-inline"><input type="radio" name="familyradio" value="New">Create New Family </label>
             </div>
         </div>
 
-        @*<div class="form-group" id="familynew">
-            @Html.Partial("~/Views/Shared/_Family.cshtml",Model.Family);
-        </div>*@
+        <div class="form-group" id="newfamilybutton" hidden>
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default btn-sm" onclick="location.href = '@Url.Action("Create", "Families")'">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New Family
+                </button>
+            </div>
+        </div>
 
         <div class="form-group" id="familydropdown">
             @Html.LabelFor(model => model.FamilyID, "FamilyID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -139,17 +143,17 @@
 </div>
 
 @section Scripts{
-    
+
     <script>
         $("input[name='familyradio']").click(function () {
             var clicked = $(this).val();
             if (clicked == 'New') {
                 $('#familydropdown').hide();
-                $('#familynew').show();
+                $('#newfamilybutton').show();
             } else {
-                $('#familynew').hide();
+                $('#newfamilybutton').hide();
                 $('#familydropdown').show();
             }
         });
     </script>
-  }
+}

@@ -14,6 +14,11 @@ namespace The_Journal.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+        
+
+
+
         // GET: Children
         public ActionResult Index()
         {
@@ -41,7 +46,7 @@ namespace The_Journal.Controllers
         {
             ViewBag.FamilyID = new SelectList(db.Family, "FamilyID", "ApplicationUserID");
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName");
-            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "RoomID");
+            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "Name");
             return View();
         }
 
@@ -54,8 +59,6 @@ namespace The_Journal.Controllers
         {
             if (ModelState.IsValid)
             {
-                DateTime now = DateTime.Today;
-                child.Age = now.Year - child.DOB.Year;
                 db.Children.Add(child);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,7 +66,7 @@ namespace The_Journal.Controllers
 
             ViewBag.FamilyID = new SelectList(db.Family, "FamilyID", "ApplicationUserID", child.FamilyID);
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName", child.EmployeeID);
-            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "RoomID", child.RoomID);
+            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "Name", child.RoomID);
             return View(child);
         }
 
@@ -81,7 +84,7 @@ namespace The_Journal.Controllers
             }
             ViewBag.FamilyID = new SelectList(db.Family, "FamilyID", "ApplicationUserID", child.FamilyID);
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName", child.EmployeeID);
-            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "RoomID", child.RoomID);
+            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "Name", child.RoomID);
             return View(child);
         }
 
@@ -100,7 +103,7 @@ namespace The_Journal.Controllers
             }
             ViewBag.FamilyID = new SelectList(db.Family, "FamilyID", "ApplicationUserID", child.FamilyID);
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "FirstName", child.EmployeeID);
-            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "RoomID", child.RoomID);
+            ViewBag.RoomID = new SelectList(db.Rooms, "RoomID", "Name", child.RoomID);
             return View(child);
         }
 

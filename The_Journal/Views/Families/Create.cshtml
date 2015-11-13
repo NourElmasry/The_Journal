@@ -1,6 +1,4 @@
-﻿@*@model The_Journal.ViewModels.FamilyViewModel*@
-
-@{
+﻿@{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -177,15 +175,19 @@
             </div>
         </div>     
 
+        <input type="hidden" id="RawData" name="RawData" data-bind="text: RawData"/>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="button" class="btn btn-default" data-bind="click:Done">
+                    Done
+                </button>
             </div>
-        </div>  
+        </div>   
     </div>
 }
 
-<span data-bind="text: RawData"></span>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
