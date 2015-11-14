@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using The_Journal.Models;
 using The_Journal.ViewModels;
 
+
+
 namespace The_Journal.Controllers
 {
     public class FamiliesController : Controller
@@ -20,16 +22,68 @@ namespace The_Journal.Controllers
         {
             var family = new Family();
 
-           // db.Family.Find()
+            var user = new ApplicationUser { UserName = "", Email = "" };
 
-            var carer = new Carer();
+            family.ApplicationUserID = user.Id;
+            family.MainCarerID = 1;
 
-            carer.Family = family;
+            foreach (var child in data.Children)
+            {
+                var newChild = new Child();
 
-            db.Carers.Add(carer);
+                newChild.Family = family;
+                newChild.FirstName = child.ChildFirstName;
+                newChild.LastName = child.ChildLastName;
+                newChild.KnownName = child.ChildKnownName;
+                newChild.DOB = child.ChildDOB;
+                newChild.Gender = child.ChildGender;
+                newChild.Age = child.ChildAge;
+                newChild.StartDate = child.ChildStartDate;
+                newChild.EndDate = child.ChildEndDate;
+                newChild.SEN = child.ChildSEN;
+                newChild.KeyWorker = child.ChildKeyWorker;
+                newChild.Allergy = child.ChildAllergy;
+                newChild.Room = child.ChildRoom;
+
+                db.Children.Add(newChild);
+            }
+
+            foreach(var carer in data.Carers)
+            {
+                var newCarer = new Carer();
+                
+                newCarer.Family = family;
+                newCarer.FirstName = carer.CFirstName;
+                newCarer.LastName = carer.CLastName;
+                newCarer.DOB = carer.CDOB;
+                newCarer.HomeNum = carer.CHomeNum;
+                newCarer.WorkNum = carer.CWorkNum;
+                newCarer.MobileNum = carer.CMobileNum;
+                newCarer.Address = carer.CAddress;
+                newCarer.PostCode = carer.CPostCode;
+                
+                db.Carers.Add(newCarer);
+
+            }
+
+            foreach (var eContact in data.EContacts)
+            {
+                var newEContact = new EmergencyContact();
+
+                newEContact.Family = family;
+                newEContact.FirstName = eContact.ECFirstName;
+                newEContact.LastName = eContact.ECLastName;
+                newEContact.MobileNum = eContact.ECMobileNum;
+                newEContact.Relationship = eContact.ECRelationship;
+
+
+                db.EmergencyContacts.Add(newEContact);
+            }
+
             db.Family.Add(family);
             db.SaveChanges();
-            //ViewBag.myFamilyDetails = myData;
+
+           // db.Family.Find()
         }
 
         // GET: Families

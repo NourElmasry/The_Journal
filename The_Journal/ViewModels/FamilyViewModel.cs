@@ -63,8 +63,10 @@ namespace The_Journal.ViewModels
         public int EmployeeID { get; set; }
         public virtual Employee ChildKeyWorker { get; set; }
 
+        public int RoomID { get; set; }
+        public virtual Room ChildRoom { get; set; }
 
-        public string ChildRoom { get; set; }
+      //  public string ChildRoom { get; set; }
 
         public string ChildAllergy { get; set; }
     }
