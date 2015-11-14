@@ -4,8 +4,8 @@
 
     child.ChildFirstName = ChildFirstName;
     child.ChildLastName = ChildLastName;
-    child.ChildDOB = ChildDOB;
     child.ChildKnownName = ChildKnownName;
+    child.ChildDOB = ChildDOB;
     child.ChildGender = ChildGender;
     child.ChildAge = ChildAge;
     child.ChildStartDate = ChildStartDate;
@@ -43,12 +43,40 @@ function AddFamilyViewModel()
 {
     var family = this;
 
+    family.Children = ko.observableArray();
+
     family.Carers = ko.observableArray();
     
     family.EContacts = ko.observableArray();
     
-    famil.Children = ko.observableArray();
+    ///Add and Remove Child
 
+    family.addChild = function () {
+
+        //if (family.NewChildFirstName.isValid() && family.NewChildLastName.isValid() && NewChildDOB.isValid() && family.NewChildKnownName.isValid() && family.NewChildGender.isValid() && family.NewChildAge.isValid() && family.NewChildStartDate.isValid() && family.NewChildEndDate.isValid() && family.NewChildSEN.isValid() && family.NewChildRoom.isValid() && family.NewChildAllergy.isValid() && family.NewChildKeyWorker.isValid())
+        //{
+
+            family.Children.push(new AddChildVM(family.NewChildFirstName(), family.NewChildLastName(), family.NewChildDOB(), family.NewChildKnownName(), family.NewChildGender(), family.NewChildAge(), family.NewChildStartDate(), family.NewChildEndDate(), family.NewChildSEN(), family.NewChildKeyWorker(), family.NewChildAllergy(), family.NewChildRoom()));
+
+            family.NewChildFirstName("");
+            family.NewChildLastName("");
+            family.NewChildDOB("");
+            family.NewChildKnownName("");
+            family.NewChildGender("");
+            family.NewChildAge("");
+            family.NewChildStartDate("");
+            family.NewChildEndDate("");
+            family.NewChildSEN("");
+            family.NewChildKeyWorker("");
+            family.NewChildAllergy("");
+            family.NewChildRoom("");
+            return false;
+       // }
+
+    }
+    family.removeChild = function (Child) { family.Children.remove(Child) }
+
+    ///Add and Remove Carer
     family.addCarer = function () {
 
         if (family.NewCarerFirstName.isValid() && family.NewCarerLastName.isValid() && familyNewCarerDOB.isValid() && family.NewCarerEmail.isValid() && family.NewCarerHomeNum.isValid() && family.NewCarerMobileNum.isValid() && family.NewCarerWorkNum.isValid() && family.NewCarerAddress.isValid() && family.NewCarerPostCode.isValid())
@@ -68,35 +96,9 @@ function AddFamilyViewModel()
         }
 
     }
+    family.removeCarer = function (Carer) { family.Carers.remove(Carer) }
 
-
-    family.addChild = function () {
-
-        if (family.NewCarerFirstName.isValid() && family.NewCarerLastName.isValid() && familyNewCarerDOB.isValid() && family.NewCarerEmail.isValid() && family.NewCarerHomeNum.isValid() && family.NewCarerMobileNum.isValid() && family.NewCarerWorkNum.isValid() && family.NewCarerAddress.isValid() && family.NewCarerPostCode.isValid()) {
-            family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode()));
-
-            child.ChildFirstName("");
-            child.ChildLastName("");
-            child.ChildDOB("");
-            child.ChildKnownName("");
-            child.ChildGender("");
-            child.ChildAge("");
-            child.ChildStartDate("");
-            child.ChildEndDate("");
-            child.ChildSEN("");
-            child.ChildKeyWorker("");
-            child.ChildAllergy("");
-            child.ChildRoom("");
-            return false;
-        }
-
-    }
-
-
-    family.removeCarer = function(Carer) { family.Carers.remove(Carer) }
-   
-    family.removeChild = function (Child) { family.Children.remove(Child) }
-
+    ///Add and Remove Emergency Contact
     family.addEC = function () {
         if (family.NewECFirstName.isValid() && family.NewECMobileNum.isValid() && family.NewECLastName.isValid() && family.NewECRelationship.isValid())
         {
@@ -109,9 +111,25 @@ function AddFamilyViewModel()
         }
         return false;
     }
-
     family.removeEContact = function (EContact) { family.EContacts.remove(EContact) }
 
+
+    ///New Child Props
+    family.NewChildFirstName = ko.observable();
+    family.NewChildLastName = ko.observable();
+    family.NewChildDOB = ko.observable();
+    family.NewChildKnownName = ko.observable();
+    family.NewChildGender = ko.observable();
+    family.NewChildAge = ko.observable();
+    family.NewChildStartDate = ko.observable();
+    family.NewChildEndDate = ko.observable();
+    family.NewChildSEN = ko.observable();
+    family.NewChildKeyWorker = ko.observable();
+    family.NewChildAllergy = ko.observable();
+    family.NewChildRoom = ko.observable();
+
+
+    ///New Carer props
     family.NewCarerFirstName = ko.observable().extend({
         required: true,
         minLength: 3,
@@ -181,6 +199,9 @@ function AddFamilyViewModel()
 
     family.NewCarerEmail = ko.observable().extend({ email: true, required: true });
 
+
+    ///New Emergency Contacts Props
+
     family.NewECFirstName = ko.observable().extend({
         required: true,
         minLength: 3,
@@ -218,15 +239,25 @@ function AddFamilyViewModel()
         }
     });
 
+    ///Converting Data to JSON
+
     family.RawData = ko.computed(function () {
         var data = ko.toJS(family);
 
-
-
-        
-
-
         delete data.RawData;
+
+        delete data.ChildFirstName;
+        delete data.ChildLastName;
+        delete data.ChildDOB;
+        delete data.ChildKnownName;
+        delete data.ChildGender;
+        delete data.ChildAge;
+        delete data.ChildStartDate;
+        delete data.ChildEndDate;
+        delete data.ChildSEN;
+        delete data.ChildKeyWorker;
+        delete data.ChildAllergy;
+        delete data.ChildRoom;
 
         delete data.NewCarerFirstName;
         delete data.NewCarerLastName;

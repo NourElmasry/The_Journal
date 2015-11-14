@@ -14,11 +14,6 @@ namespace The_Journal.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
-        
-
-
-
         // GET: Children
         public ActionResult Index()
         {
