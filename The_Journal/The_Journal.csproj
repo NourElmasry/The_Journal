@@ -162,9 +162,11 @@
     <Compile Include="Controllers\CarersController.cs" />
     <Compile Include="Controllers\ChildrenController.cs" />
     <Compile Include="Controllers\EmergencyContactsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\FamiliesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\SessionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,6 +182,10 @@
     <Compile Include="Migrations\201511051220537_Model_Modifications1.cs" />
     <Compile Include="Migrations\201511051220537_Model_Modifications1.Designer.cs">
       <DependentUpon>201511051220537_Model_Modifications1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511150720252_enums_to_strings.cs" />
+    <Compile Include="Migrations\201511150720252_enums_to_strings.Designer.cs">
+      <DependentUpon>201511150720252_enums_to_strings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -364,6 +370,16 @@
     <Content Include="Views\Children\Details.cshtml" />
     <Content Include="Views\Children\Edit.cshtml" />
     <Content Include="Views\Children\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -385,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511051220537_Model_Modifications1.resx">
       <DependentUpon>201511051220537_Model_Modifications1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150720252_enums_to_strings.resx">
+      <DependentUpon>201511150720252_enums_to_strings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

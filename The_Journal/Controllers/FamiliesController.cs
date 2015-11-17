@@ -9,6 +9,10 @@ using System.Web.Mvc;
 using The_Journal.Models;
 using The_Journal.ViewModels;
 
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+
 
 
 namespace The_Journal.Controllers
@@ -23,9 +27,15 @@ namespace The_Journal.Controllers
             var family = new Family();
 
             var user = new ApplicationUser { UserName = "", Email = "" };
+            var userMgr = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            userMgr.Create(user, "DefaultPassword");
 
-            family.ApplicationUserID = user.Id;
+            family.Account = user;
+
+           // family.ApplicationUserID = user.Id;
             family.MainCarerID = 1;
+            
+            db.Family.Add(family);
 
             foreach (var child in data.Children)
             {
@@ -80,7 +90,7 @@ namespace The_Journal.Controllers
                 db.EmergencyContacts.Add(newEContact);
             }
 
-            db.Family.Add(family);
+            
             db.SaveChanges();
 
            // db.Family.Find()

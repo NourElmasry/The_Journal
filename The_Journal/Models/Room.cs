@@ -21,7 +21,7 @@ namespace The_Journal.Models
 
         public virtual IEnumerable<Child> Children { get; set; }
 
-        public int NumofChildred { get { return this.Children.Count(); } }
+    //    public int NumofChildred { get { return this.Children.Count(); } }
     }
 
 }

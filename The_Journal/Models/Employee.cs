@@ -7,7 +7,7 @@ using System.Data.Entity.Spatial;
 
 namespace The_Journal.Models
 {
-    public enum Type { Admin, Nurse }
+   // public enum Type { Admin, Nurse }
     public class Employee
     {
         [Key]
@@ -22,7 +22,7 @@ namespace The_Journal.Models
         [Display(Name = "Known Name")]
         public string KnownName { get; set; }
 
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
@@ -42,7 +42,7 @@ namespace The_Journal.Models
         public int RoomID { get; set; }
         public virtual Room Room { get; set; }
 
-        public Type Type { get; set; }
+        public string Type { get; set; }
 
         public int Salary { get; set; }
 

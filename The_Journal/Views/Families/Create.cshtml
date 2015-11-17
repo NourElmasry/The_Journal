@@ -39,14 +39,14 @@
                     <td data-bind="text: ChildLastName"></td>
                     <td data-bind="text: ChildKnownName"></td>
                     <td data-bind="text: ChildDOB"></td>
-                    <td data-bind="text: ChildGender"></td>
+                    <td data-bind="text: Gender"></td>
                     <td data-bind="text: ChildAge"></td>
                     <td data-bind="text: ChildStartDate"></td>
                     <td data-bind="text: ChildEndDate"></td>
                     <td data-bind="text: ChildSEN"></td>
-                    <td data-bind="text: ChildKeyWorker"></td>
+                    <td data-bind="text: EmployeeID"></td>
                     <td data-bind="text: ChildAllergy"></td>
-                    <td data-bind="text: ChildRoom"></td>
+                    <td data-bind="text: RoomID"></td>
                     <td><a href="#" data-bind="click: $root.removeChild">Remove</a></td>
                 </tr>
             </tbody>
@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Gender</label>
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:NewChildGender" class="form-control" />
+                        <select data-bind="value:NewChildGender, options:NewChildGenderOptions, optionsValue:'Gender', optionsText:'Gender', optionsCaption:'Select Gender'" class="form-control"></select>
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Key Worker</label>
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:NewChildKeyWorker" class="form-control" />
+                        <select class="form-control" data-bind="value: NewChildKeyWorkerID, options: NewChildKeyWorkerOptions, optionsText: 'FirstName', optionsValue: 'EmployeeID', optionsCaption: 'Select a Keyworker'"></select>
                     </div>
                 </div>
 
@@ -137,7 +137,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Room</label>
                     <div class="col-md-10">
-                        <input type="text" data-bind="value:NewChildRoom" class="form-control" />
+                        <select data-bind="value:NewChildRoomID, options: NewChildRoomOptions, optionsText: 'Name', optionsValue: 'RoomID', optionsCaption:'Select a Room'" class="form-control"></select>
                     </div>
                 </div>
 

@@ -7,17 +7,17 @@ using System.Data.Entity.Spatial;
 
 namespace The_Journal.Models
 {
-    public enum MealType { Breakfast, Snack, Tea, Pudding, Dinner }
-    public enum Portion
-    {
-        Nothing,
-        [Display(Name = "Some of It")]
-        SomeofIt,
-        [Display(Name = "Most of It")]
-        MostofIt,
-        [Display(Name = "All of It")]
-        AllofIt
-    }
+   // public enum MealType { Breakfast, Snack, Tea, Pudding, Dinner }
+    //public enum Portion
+    //{
+    //    Nothing,
+    //    [Display(Name = "Some of It")]
+    //    SomeofIt,
+    //    [Display(Name = "Most of It")]
+    //    MostofIt,
+    //    [Display(Name = "All of It")]
+    //    AllofIt
+    //}
     public class DayJournal
     {
         [Key]
@@ -27,13 +27,13 @@ namespace The_Journal.Models
         public virtual Child Sibiling { get; set; }
 
         [Display(Name = "Meal Type")]
-        public MealType? MealType { get; set; }
+        public string MealType { get; set; }
 
         [Display(Name = "Meal Name")]
         public string MealName { get; set; }
 
         [Display(Name = "Portion Eaten")]
-        public Portion? Portion { get; set; }
+        public string Portion { get; set; }
 
         [Display(Name = "Fell asleep")]
         [DataType(DataType.DateTime)]

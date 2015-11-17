@@ -7,7 +7,7 @@ using System.Data.Entity.Spatial;
 
 namespace The_Journal.Models
 {
-    public enum Gender { Male, Female }
+   
 
     public class Child
     {
@@ -23,7 +23,7 @@ namespace The_Journal.Models
         [Display(Name = "Known Name")]
         public string KnownName { get; set; }
 
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
