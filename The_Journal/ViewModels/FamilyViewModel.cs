@@ -35,7 +35,7 @@ namespace The_Journal.ViewModels
         [Display(Name = "Known Name")]
         public string ChildKnownName { get; set; }
 
-        public string ChildGender { get; set; }
+        public string Gender { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]

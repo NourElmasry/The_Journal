@@ -58,3 +58,4 @@ C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.c
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Model_Modifications.resources
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Model_Modifications1.resources
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.enums_to_strings.resources
+C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Email_Added_toCarers.resources

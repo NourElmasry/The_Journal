@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201511150720252_enums_to_strings.Designer.cs">
       <DependentUpon>201511150720252_enums_to_strings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511170632219_Email_Added_toCarers.cs" />
+    <Compile Include="Migrations\201511170632219_Email_Added_toCarers.Designer.cs">
+      <DependentUpon>201511170632219_Email_Added_toCarers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -404,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511150720252_enums_to_strings.resx">
       <DependentUpon>201511150720252_enums_to_strings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511170632219_Email_Added_toCarers.resx">
+      <DependentUpon>201511170632219_Email_Added_toCarers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

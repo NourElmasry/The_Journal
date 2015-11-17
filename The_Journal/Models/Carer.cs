@@ -23,6 +23,9 @@ namespace The_Journal.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DOB { get; set; }
 
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Display(Name = "Home Number")]
         public int HomeNum { get; set; }
 

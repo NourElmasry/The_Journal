@@ -294,7 +294,7 @@ function AddFamilyViewModel()
         delete data.ChildLastName;
         delete data.ChildDOB;
         delete data.ChildKnownName;
-        delete data.ChildGender;
+        delete data.Gender;
         delete data.ChildAge;
         delete data.ChildStartDate;
         delete data.ChildEndDate;
@@ -330,7 +330,7 @@ function AddFamilyViewModel()
             processData: false,
             contentType: "application/json; charset=utf-8",
             success: function (result) {
-                alert(result);
+                alert("Success");
             }
         });
     }

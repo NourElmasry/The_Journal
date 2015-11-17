@@ -26,7 +26,7 @@ namespace The_Journal.Controllers
         {
             var family = new Family();
 
-            var user = new ApplicationUser { UserName = "", Email = "" };
+            var user = new ApplicationUser { UserName = data.Carers[0].CEmail, Email = data.Carers[0].CEmail };
             var userMgr = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             userMgr.Create(user, "DefaultPassword");
 
@@ -46,14 +46,14 @@ namespace The_Journal.Controllers
                 newChild.LastName = child.ChildLastName;
                 newChild.KnownName = child.ChildKnownName;
                 newChild.DOB = child.ChildDOB;
-                newChild.Gender = child.ChildGender;
-                newChild.Age = child.ChildAge;
+                newChild.Gender = child.Gender;
+                newChild.Age = DateTime.Now.Year - newChild.DOB.Year;
                 newChild.StartDate = child.ChildStartDate;
                 newChild.EndDate = child.ChildEndDate;
                 newChild.SEN = child.ChildSEN;
-                newChild.KeyWorker = child.ChildKeyWorker;
+                newChild.EmployeeID = child.EmployeeID;
                 newChild.Allergy = child.ChildAllergy;
-                newChild.Room = child.ChildRoom;
+                newChild.RoomID = child.RoomID;
 
                 db.Children.Add(newChild);
             }
@@ -71,7 +71,8 @@ namespace The_Journal.Controllers
                 newCarer.MobileNum = carer.CMobileNum;
                 newCarer.Address = carer.CAddress;
                 newCarer.PostCode = carer.CPostCode;
-                
+                newCarer.Email = carer.CEmail;
+
                 db.Carers.Add(newCarer);
 
             }
