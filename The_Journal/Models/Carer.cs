@@ -42,7 +42,13 @@ namespace The_Journal.Models
         public int FamilyID { get; set; }
         public virtual Family Family { get; set; }
 
-        bool IsMainCarer { get { return Family.MainCarerID == this.CarerID; } }
+        bool IsMainCarer 
+        { 
+            get 
+            { 
+                return Family.MainCarerID == this.CarerID; 
+            }
+        }
 
     }
 }

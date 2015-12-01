@@ -16,6 +16,7 @@ namespace The_Journal.Models
         public virtual ApplicationUser Account { get; set; } 
 
         public int MainCarerID { get; set; }
+        //public virtual Carer MainCarer { get; set; }
 
         public virtual IEnumerable<Child> Children { get; set; }
         public virtual IEnumerable<Carer> Carers { get; set; }

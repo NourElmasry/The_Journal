@@ -1,0 +1,317 @@
+﻿@{
+    Layout = null;
+}
+
+
+        <table class="table table-striped table-bordered" data-bind="visible: Children().length > 0">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Known Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>SEN</th>
+                    <th>Key Worker</th>
+                    <th>Allergy</th>
+                    <th>Room</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: Children, visible: Children().length > 0">
+                <tr>
+                    <td data-bind="text: ChildFirstName"></td>
+                    <td data-bind="text: ChildLastName"></td>
+                    <td data-bind="text: ChildKnownName"></td>
+                    <td data-bind="text: ChildDOB"></td>
+                    <td data-bind="text: Gender"></td>
+                    <td data-bind="text: ChildAge"></td>
+                    <td data-bind="text: ChildStartDate"></td>
+                    <td data-bind="text: ChildEndDate"></td>
+                    <td data-bind="text: ChildSEN"></td>
+                    <td data-bind="text: EmployeeID"></td>
+                    <td data-bind="text: ChildAllergy"></td>
+                    <td data-bind="text: RoomID"></td>
+                    <td><a href="#" data-bind="click: $root.removeChild">Remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Child</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">First Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildFirstName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Last Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildLastName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Known Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildKnownName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Date of Birth</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildDOB" class="form-control datecontrol" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Gender</label>
+                    <div class="col-md-10">
+                        <select data-bind="value:NewChildGender, options:NewChildGenderOptions, optionsValue:'Gender', optionsText:'Gender', optionsCaption:'Select Gender'" class="form-control"></select>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        <label class="control-label col-md-2">Age</label>
+                        <div class="col-md-10">
+                            <input type="text" data-bind="value:NewChildAge" class="form-control" readonly />
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Start Date</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildStartDate" class="form-control datecontrol" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">End Date</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildEndDate" class="form-control datecontrol" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">SEN</label>
+                    <div class="col-md-10">
+                        <textarea data-bind="value:NewChildSEN" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Key Worker</label>
+                    <div class="col-md-10">
+                        <select class="form-control" data-bind="value: NewChildKeyWorkerID, options: NewChildKeyWorkerOptions, optionsText: 'FirstName', optionsValue: 'EmployeeID', optionsCaption: 'Select a Keyworker'"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Allergy</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewChildAllergy" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Room</label>
+                    <div class="col-md-10">
+                        <select data-bind="value:NewChildRoomID, options: NewChildRoomOptions, optionsText: 'Name', optionsValue: 'RoomID', optionsCaption:'Select a Room'" class="form-control"></select>
+                    </div>
+                </div>
+
+                <button class="btn btn-default" data-bind="click: addChild">Add Child</button>
+            </div>
+        </div>
+
+
+
+        <table class="table table-striped table-bordered" data-bind="visible: Carers().length > 0">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Email</th>
+                    <th>Mobile Number</th>
+                    <th>Work Phone</th>
+                    <th>Home Phone</th>
+                    <th>Address</th>
+                    <th>Postcode</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: Carers, visible: Carers().length > 0">
+                <tr>
+                    <td data-bind="text: CFirstName"></td>
+                    <td data-bind="text: CLastName"></td>
+                    <td data-bind="text: CDOB"></td>
+                    <td data-bind="text: CEmail"></td>
+                    <td data-bind="text: CMobileNum"></td>
+                    <td data-bind="text: CWorkNum"></td>
+                    <td data-bind="text: CHomeNum"></td>
+                    <td data-bind="text: CAddress"></td>
+                    <td data-bind="text: CPostCode"></td>
+                    <td><a href="#" data-bind="click: $root.removeCarer">Remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Carer</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">First Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerFirstName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Last Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerLastName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Date of Birth</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerDOB" class="form-control datecontrol" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Email</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerEmail" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Home Phone Number</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerHomeNum" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Work Phone Number</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerWorkNum" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mobile Number</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerMobileNum" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Address</label>
+                    <div class="col-md-10">
+                        <textarea data-bind="value:NewCarerAddress" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Postcode</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewCarerPostCode" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">
+                        <label><input type="checkbox" data-bind="checked: NewCarerMainCarer, click: isMain" /> Main Carer</label>
+                    </div>
+                </div>
+
+                <button class="btn btn-default" data-bind="click: addCarer, enable: Carers().length < 3">Add Carer</button>
+            </div>
+        </div>
+
+
+
+        <table class="table table-striped table-bordered" data-bind="visible: EContacts().length > 0">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Mobile Number</th>
+                    <th>Relationship</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: EContacts, visible: EContacts().length > 0">
+                <tr>
+                    <td data-bind="text: ECFirstName"></td>
+                    <td data-bind="text: ECLastName"></td>
+                    <td data-bind="text: ECMobileNum"></td>
+                    <td data-bind="text: ECRelationship"></td>
+                    <td><a href="#" data-bind="click: $root.removeEContact">Remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Emergency Contacts</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">First Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewECFirstName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Last Name</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewECLastName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mobile Number</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewECMobileNum" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Relationship</label>
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:NewECRelationship" class="form-control" />
+                    </div>
+                </div>
+
+                <button class="btn btn-default" data-bind="click: addEC, enable: EContacts().length < 4">Add Emergency Contact</button>
+
+            </div>
+        </div>
+
+        <input type="hidden" id="RawData" name="RawData" data-bind="text: RawData" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" data-bind="click:Done">
+                    Create
+                </button>
+            </div>
+        </div>
+   

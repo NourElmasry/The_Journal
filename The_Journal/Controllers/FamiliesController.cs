@@ -12,6 +12,8 @@ using The_Journal.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 
 
@@ -22,8 +24,10 @@ namespace The_Journal.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         [HttpPost]
-        public void Save(FamilyViewModel data)
+        public ActionResult Save(FamilyViewModel data)
         {
+            var status = new StatusViewModel();
+            status.IsSuccessful = true;
             var family = new Family();
 
             var user = new ApplicationUser { UserName = data.Carers[0].CEmail, Email = data.Carers[0].CEmail };
@@ -32,14 +36,24 @@ namespace The_Journal.Controllers
 
             family.Account = user;
 
-           // family.ApplicationUserID = user.Id;
-            family.MainCarerID = 1;
+            Carer mainCarer = null;
+
+          // family.MainCarer = 1;
             
             db.Family.Add(family);
-
+           
             foreach (var child in data.Children)
             {
-                var newChild = new Child();
+                Child newChild;
+
+                if (child.ChildID == 0)
+                {
+                     newChild = new Child();
+                }
+                else
+                {
+                    newChild = db.Children.Find(child.ChildID);
+                }
 
                 newChild.Family = family;
                 newChild.FirstName = child.ChildFirstName;
@@ -57,7 +71,7 @@ namespace The_Journal.Controllers
 
                 db.Children.Add(newChild);
             }
-
+            
             foreach(var carer in data.Carers)
             {
                 var newCarer = new Carer();
@@ -75,8 +89,12 @@ namespace The_Journal.Controllers
 
                 db.Carers.Add(newCarer);
 
+                if (carer.CMainCarer == true)
+                {
+                    mainCarer = newCarer;
+                }
             }
-
+          
             foreach (var eContact in data.EContacts)
             {
                 var newEContact = new EmergencyContact();
@@ -91,10 +109,101 @@ namespace The_Journal.Controllers
                 db.EmergencyContacts.Add(newEContact);
             }
 
-            
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                status.IsSuccessful = false;
+
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        status.ValidationErrors.Add(string.Format("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage));
+                    }
+                }
+                throw;
+            }
+
+            family.MainCarerID = mainCarer.CarerID;
+
             db.SaveChanges();
 
-           // db.Family.Find()
+            return Json(status, JsonRequestBehavior.AllowGet);
+          
+        }
+
+        //Load Data and send to KO as JSON
+        public ActionResult Load(int familyId)
+        {
+            var vm = new FamilyViewModel();
+
+            Family family = db.Family.Find(familyId);
+            if (family == null)
+            {
+                return HttpNotFound();
+            }
+
+            foreach (var child in family.Children)
+            {
+                var newChild = new ChildViewModel();
+
+                newChild.ChildFirstName = child.FirstName;
+                newChild.ChildLastName = child.LastName;
+                newChild.ChildKnownName = child.KnownName;
+                newChild.ChildDOB = child.DOB;
+                newChild.Gender = child.Gender;
+                newChild.ChildAge = DateTime.Now.Year - newChild.ChildDOB.Year;
+                newChild.ChildStartDate = child.StartDate;
+                newChild.ChildEndDate = child.EndDate;
+                newChild.ChildSEN = child.SEN;
+                newChild.EmployeeID = child.EmployeeID;
+                newChild.ChildAllergy = child.Allergy;
+                newChild.RoomID = child.RoomID;
+
+                vm.Children.Add(newChild);
+            }
+
+            foreach (var carer in family.Carers)
+            {
+                var newCarer = new CarerViewModel();
+
+                
+                newCarer.CFirstName = carer.FirstName;
+                newCarer.CLastName = carer.LastName;
+                newCarer.CDOB = carer.DOB;
+                newCarer.CHomeNum = carer.HomeNum;
+                newCarer.CWorkNum = carer.WorkNum;
+                newCarer.CMobileNum = carer.MobileNum;
+                newCarer.CAddress = carer.Address;
+                newCarer.CPostCode = carer.PostCode;
+                newCarer.CEmail = carer.Email;
+
+                vm.Carers.Add(newCarer);
+            }
+
+            foreach (var eContact in family.EmergencyContacts)
+            {
+                var newEContact = new EContactViewModel();
+
+                newEContact.ECFirstName = eContact.FirstName;
+                newEContact.ECLastName = eContact.LastName;
+                newEContact.ECMobileNum = eContact.MobileNum;
+                newEContact.ECRelationship = eContact.Relationship;
+
+
+                vm.EContacts.Add(newEContact);
+            }
+
+            return Json(vm, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Families

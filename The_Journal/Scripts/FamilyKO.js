@@ -1,7 +1,4 @@
-﻿
-
-
-var AddChildVM = function AddChild(ChildFirstName, ChildLastName, ChildDOB, ChildKnownName, ChildGender, ChildAge, ChildStartDate, ChildEndDate, ChildSEN, employeeID, ChildAllergy, roomID)
+﻿var AddChildVM = function AddChild(ChildFirstName, ChildLastName, ChildDOB, ChildKnownName, ChildGender, ChildAge, ChildStartDate, ChildEndDate, ChildSEN, employeeID, ChildAllergy, roomID)
 {
     var child = this;
 
@@ -19,7 +16,8 @@ var AddChildVM = function AddChild(ChildFirstName, ChildLastName, ChildDOB, Chil
     child.RoomID = roomID;
    
 }
-var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode)
+
+var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum, CWorkNum, CMobileNum, CAddress, CPostCode, CMainCarer)
 {
     var carer = this;
     carer.CFirstName = CFirstName;
@@ -31,6 +29,7 @@ var AddCarerVM = function AddCarer(CFirstName, CLastName, CDOB, CEmail, CHomeNum
     carer.CMobileNum = CMobileNum;
     carer.CAddress = CAddress;
     carer.CPostCode = CPostCode;
+    carer.CMainCarer=CMainCarer;
 }
 
 var AddECVM = function AddEmergencyContact(ECFirstName,ECLastName,ECMobileNum,ECRelationship)
@@ -52,6 +51,8 @@ function AddFamilyViewModel()
     
     family.EContacts = ko.observableArray();
     
+    family.ValidationErrors = ko.observableArray();
+
 
     ///New Child Props
     family.NewChildFirstName = ko.observable();
@@ -192,13 +193,18 @@ function AddFamilyViewModel()
 
     family.NewCarerEmail = ko.observable().extend({ email: true, required: true });
 
+    family.NewCarerMainCarer = ko.observable(false);
+
+    family.isMain = function () {
+        return true;
+    }
 
     ///Add and Remove Carer
     family.addCarer = function () {
 
         if (family.NewCarerFirstName.isValid() && family.NewCarerLastName.isValid()  && family.NewCarerEmail.isValid() && family.NewCarerHomeNum.isValid() && family.NewCarerMobileNum.isValid() && family.NewCarerWorkNum.isValid() && family.NewCarerAddress.isValid() && family.NewCarerPostCode.isValid())
         {
-            family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode()));
+            family.Carers.push(new AddCarerVM(family.NewCarerFirstName(), family.NewCarerLastName(), family.NewCarerDOB(), family.NewCarerEmail(), family.NewCarerHomeNum(), family.NewCarerMobileNum(), family.NewCarerWorkNum(), family.NewCarerAddress(), family.NewCarerPostCode(), family.NewCarerMainCarer()));
 
             family.NewCarerFirstName("");
             family.NewCarerFirstName.clearError();
@@ -218,6 +224,7 @@ function AddFamilyViewModel()
             family.NewCarerAddress.clearError();
             family.NewCarerPostCode("");
             family.NewCarerPostCode.clearError();
+            family.NewCarerMainCarer(false)
             return false;
         }
 
@@ -312,6 +319,7 @@ function AddFamilyViewModel()
         delete data.NewCarerAddress;
         delete data.NewCarerPostCode;
         delete data.NewCarerEmail;
+        delete data.NewCarerMainCarer;
 
         delete data.NewECFirstName;
         delete data.NewECLastName;
@@ -321,8 +329,23 @@ function AddFamilyViewModel()
         return JSON.stringify(data);
     });
 
+    family.LoadData = function (data) {
+        $.each(data.Carers, function (i, carer) {
+            family.Carers.push(new AddCarerVM(carer.CFirstName(), carer.CLastName(), carer.CDOB(), carer.CEmail(), carer.CHomeNum(), carer.CMobileNum(), carer.CWorkNum(), carer.CAddress(), carer.CPostCode(), carer.CMainCarer()));
+        });
+
+        $.each(data.EContacts, function (i, contact) {
+            family.EContacts.push(new AddECVM(contact.ECFirstName(), contact.NewECLastName(), contact.NewECMobileNum(), contact.NewECRelationship()));
+        });
+
+        $.each(data.Children, function (i, child) {
+            family.Children.push(new AddChildVM(child.ChildFirstName(), child.ChildLastName(), child.ChildDOB(), child.ChildKnownName(), child.Gender(), child.ChildAge(), child.ChildStartDate(), child.ChildEndDate(), child.ChildSEN(), child.EmployeeID(), child.ChildAllergy(), child.RoomID()));
+        });
+    }
+
     family.Done = function () {
         $.ajax({
+
             url: "/Families/Save",
             type: "post",
             data: family.RawData(),
@@ -330,11 +353,34 @@ function AddFamilyViewModel()
             processData: false,
             contentType: "application/json; charset=utf-8",
             success: function (result) {
-                alert("Success");
+                if (result.IsSuccessful === false) {
+                    family.ValidationErrors.extend(result.ValidationErrors)
+                }
+                else {
+                    alert("Success");
+                }
+            },
+            failed: function (result) {
+                family.ValidationErrors.push("Something went wrong with the save");
             }
         });
     }
 
+
+    family.Load = function (familyId) {
+        alert("IN");
+        $.ajax({
+            url: "/Families/Load",
+            type: "get",
+            data: familyId,
+            datatype: "json",
+            processData: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                family.LoadData(result);
+            }
+        });
+    }
 
 }
 ko.applyBindings(new AddFamilyViewModel());

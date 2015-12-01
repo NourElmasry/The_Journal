@@ -104,6 +104,8 @@ namespace The_Journal.ViewModels
 
         [Display(Name = "Postcode")]
         public string CPostCode { get; set; }
+
+        public bool CMainCarer { get; set; }
        
     }
 

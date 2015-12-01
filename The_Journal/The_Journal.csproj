@@ -191,6 +191,14 @@
     <Compile Include="Migrations\201511170632219_Email_Added_toCarers.Designer.cs">
       <DependentUpon>201511170632219_Email_Added_toCarers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511301212083_Sorting out main carer.cs" />
+    <Compile Include="Migrations\201511301212083_Sorting out main carer.Designer.cs">
+      <DependentUpon>201511301212083_Sorting out main carer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511301216096_Adding Main Carer back.cs" />
+    <Compile Include="Migrations\201511301216096_Adding Main Carer back.Designer.cs">
+      <DependentUpon>201511301216096_Adding Main Carer back.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -212,6 +220,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\FamilyViewModel.cs" />
+    <Compile Include="ViewModels\StatusViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -384,6 +393,7 @@
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\Shared\_FamiliesKOPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,6 +421,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511170632219_Email_Added_toCarers.resx">
       <DependentUpon>201511170632219_Email_Added_toCarers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511301212083_Sorting out main carer.resx">
+      <DependentUpon>201511301212083_Sorting out main carer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511301216096_Adding Main Carer back.resx">
+      <DependentUpon>201511301216096_Adding Main Carer back.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
