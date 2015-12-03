@@ -61,3 +61,4 @@ C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.M
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Email_Added_toCarers.resources
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.Sortingoutmaincarer.resources
 C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.AddingMainCarerback.resources
+C:\Users\Amr\Desktop\The Journal\The_Journal\The_Journal\obj\Debug\The_Journal.Migrations.AddingFamilynametoFamily.resources

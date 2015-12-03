@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201511301216096_Adding Main Carer back.Designer.cs">
       <DependentUpon>201511301216096_Adding Main Carer back.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512020714474_Adding Familyname to Family.cs" />
+    <Compile Include="Migrations\201512020714474_Adding Familyname to Family.Designer.cs">
+      <DependentUpon>201512020714474_Adding Familyname to Family.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -375,7 +379,6 @@
     <Content Include="Views\Families\Delete.cshtml" />
     <Content Include="Views\Families\Details.cshtml" />
     <Content Include="Views\Families\Edit.cshtml" />
-    <Content Include="Views\Families\Index.cshtml" />
     <Content Include="Views\Families\Create.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Children\Create.cshtml" />
@@ -394,6 +397,12 @@
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
     <Content Include="Views\Shared\_FamiliesKOPartial.cshtml" />
+    <Content Include="Views\Families\Index.cshtml" />
+    <Content Include="Views\Families1\Create.cshtml" />
+    <Content Include="Views\Families1\Delete.cshtml" />
+    <Content Include="Views\Families1\Details.cshtml" />
+    <Content Include="Views\Families1\Edit.cshtml" />
+    <Content Include="Views\Families1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511301216096_Adding Main Carer back.resx">
       <DependentUpon>201511301216096_Adding Main Carer back.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512020714474_Adding Familyname to Family.resx">
+      <DependentUpon>201512020714474_Adding Familyname to Family.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,6 +19,14 @@ namespace The_Journal.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return this.FirstName + " " + this.LastName;
+            }
+        }
+
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DOB { get; set; }

@@ -12,6 +12,8 @@ namespace The_Journal.Models
         [Key]
         public int FamilyID { get; set; }
 
+        public string FamilyName { get; set; }
+
         public string ApplicationUserID { get; set; }
         public virtual ApplicationUser Account { get; set; } 
 

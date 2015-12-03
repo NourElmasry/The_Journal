@@ -134,7 +134,7 @@ namespace The_Journal.Controllers
             }
 
             family.MainCarerID = mainCarer.CarerID;
-
+            family.FamilyName = mainCarer.FullName;
             db.SaveChanges();
 
             return Json(status, JsonRequestBehavior.AllowGet);
@@ -209,6 +209,7 @@ namespace The_Journal.Controllers
         // GET: Families
         public ActionResult Index()
         {
+             
             var family = db.Family.Include(f => f.Account);
             return View(family.ToList());
         }
